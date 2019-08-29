@@ -10,5 +10,6 @@ The script then adds a click listener to the glossary term. When clicked, the  t
 
 # View the prototype
 
-[1939 Register](https://tna-glossary-expander.netlify.com/1939-register.html)
-[Alien arrivals](https://tna-glossary-expander.netlify.com/alien-arrivals.html)
+- [1939 Register](https://tna-glossary-expander.netlify.com/1939-register.html)
+
+- [Alien arrivals](https://tna-glossary-expander.netlify.com/alien-arrivals.html)
