@@ -7,8 +7,7 @@
 $(function() {
 
     let make_plain_text_into_glossary_terms = function() {
-
-        let research_guide_text = $('p');
+        let research_guide_text = $('#page_wrap .row:nth-of-type(2) p');
 
         console.log('Paragraphs:', research_guide_text.length);
 
