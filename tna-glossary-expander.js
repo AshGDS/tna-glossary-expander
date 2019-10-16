@@ -1,28 +1,64 @@
-/* Takes the title of a glossary term, and splits it by the first instance of 'charge',
-and then creates more meaningful added text for the glossary term.
-
-The splitting is done in order to make the innerText be dynamic (e.g. if one research guide says
-'There may be a charge' and one says 'There will be a charge' it can work for both of those glossary terms.
-
-*/
+/*
+* This script firstly converts plain text (£) in research guides into glossary terms.
+* The script will then loop through every instance of the glossary terms, and make them accessible.
+* */
 
 
-let glossary_terms = document.querySelectorAll('.research-guide-glossary-term');
+$(function() {
 
-glossary_terms.forEach((term) => {
+    let make_plain_text_into_glossary_terms = function() {
 
-    if(term.innerText === '£') {
+        let research_guide_text = $('p');
 
-        term.classList.add('glossary-expand');
+        console.log('Paragraphs:', research_guide_text.length);
 
-        let first_sentence =  term.title.split('charge')[0];
+        $(research_guide_text).each(function () {
 
-        term.innerText = first_sentence + ' charge.';
+            if($(this).text().indexOf('(£)') > -1) {
 
-        term.addEventListener('click',  (e) => {
-            window.alert(term.title);
-        })
+                let p_html = $(this).html();
 
-    }
+                let glossary_span =
+                    '(<span class="research-guide-glossary-term" title="There will be a charge to view these records. Searching indexes is free. Viewing and downloading are free on site at The National Archives.">£</span>)'
+
+                p_html = p_html.replace('(£)', glossary_span);
+
+                $(this).html(p_html);
+
+            }
+
+
+        });
+
+    };
+
+   let make_glossary_terms_accessible = function () {
+       let research_guide_glossary_terms = $('.research-guide-glossary-term');
+
+       if($(research_guide_glossary_terms).length > 0) {
+
+           $(research_guide_glossary_terms).each(function() {
+
+               if($(this).text() === '£') {
+
+                   $(this).addClass('glossary-expand');
+
+                   $(this).text('charges apply');
+
+                   $(this).click(function() {
+
+                       alert(this.title);
+                   });
+               }
+
+           });
+
+       }
+   };
+
+   make_plain_text_into_glossary_terms();
+   make_glossary_terms_accessible();
+
+
 
 });

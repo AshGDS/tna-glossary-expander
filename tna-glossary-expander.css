@@ -1,8 +1,10 @@
 .glossary-expand {
-    color: #2A5DB0;
+    color: #1d70b8;
+    border-bottom: 1px dotted #1d70b8;
 }
 
 .glossary-expand:hover {
+    color: #2A5DB0;
     border-bottom: 1px dotted #2A5DB0;
     cursor: pointer;
 }
